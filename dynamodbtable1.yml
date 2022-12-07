@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  EmployeesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: EMPLOYEE
+      AttributeDefinitions:
+        - AttributeName: "EMP_ID"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "EMP_ID"
+          KeyType: "HASH"
+      TimeToLiveSpecification:
+        AttributeName: "ExpirationTime"
+        Enabled: true
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+    
